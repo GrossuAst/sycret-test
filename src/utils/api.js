@@ -7,7 +7,7 @@ function checkResponse(res) {
     return Promise.reject(`Ошибка ${res.status}`);
 };
 
-export function getInitialData() {
+export function getData() {
     const url = new URL(BASE_URL);
     url.searchParams.append('MethodName', getListMethodName);
     url.searchParams.append('ApiKey', API_KEY);

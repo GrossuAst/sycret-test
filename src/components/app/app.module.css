@@ -1,0 +1,9 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0 auto;
+    min-width: 320px;
+    background-color: #ecf0f2;
+    box-sizing: border-box;
+}
