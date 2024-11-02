@@ -13,21 +13,21 @@ export const productListReducer = (state = initialState, action) => {
                 ...state,
                 feedRequest: true,
                 feedFailed: false
-            }
+            };
         case GET_INITIAL_DATA_SUCCESS: 
             return {
                 ...state,
                 data: action.payload,
                 feedRequest: false,
                 feedFailed: false
-            }
+            };
         case GET_INITIAL_DATA_FAILED: 
             return {
                 ...state,
                 feedFailed: true,
                 feedRequest: false
-            }
+            };
         default:
             return state;
     }
-}
+};

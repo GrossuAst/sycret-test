@@ -1,14 +1,22 @@
 import styles from './product.module.css';
 import { Link } from 'react-router-dom';
+import { getCurrentProduct } from '../../services/current-product/action';
+import { useDispatch } from 'react-redux';
 
-const Product = ({id, name, description, price, priceToPay, discount, tableName, primaryKey}) => {
+const Product = ({product, id, name, description, price, priceToPay, discount, tableName, primaryKey}) => {
+    const dispatch = useDispatch();
+
     function formatData(data) {
         const formattedData = Math.floor(parseFloat(data));
         return formattedData.toString();
     };
 
+    function handleProductClick() {
+        dispatch(getCurrentProduct(product));
+    };
+
     return (
-        <Link to={ `${'product' + id}`} className={ styles.link }>
+        <Link to={id} className={ styles.link } onClick={handleProductClick} >
             <article className={ styles.product }>
                 <div className={ styles.id }>
                     {id}
@@ -17,9 +25,9 @@ const Product = ({id, name, description, price, priceToPay, discount, tableName,
                     <h3 className={ styles.name }>
                         {name}
                     </h3>
-                    {/* <p className={ styles.description }>
-                        { !description && 'Описание отсутствует' }    
-                    </p>     */}
+                    <p className={ styles.description }>
+                        { !description && 'Описание отсутсвует' }
+                    </p>
                 </div>
                 <div className={ styles.priceContainer }>
                     <div className={ styles.discountContainer }>

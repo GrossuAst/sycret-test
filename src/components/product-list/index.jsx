@@ -21,6 +21,7 @@ const ProductList = () => {
                         <li className={ styles.listItem } key={ item.ID }>
                             <Product 
                                 // для использования
+                                product={ item }
                                 id={ item.ID }
                                 name={ item.NAME }
                                 description={ item.DESCRIPTION }

@@ -1,8 +1,11 @@
+import Main from "../../components/main";
+import NoData from "../../components/no-data";
+
 const NotFoundPage = () => {
     return (
-        <>
-            NOTFOUNDPAGE
-        </>
+        <Main>
+            <NoData />
+        </Main>
     )
 };
 
