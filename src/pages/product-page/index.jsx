@@ -1,8 +1,11 @@
+import styles from './product-page.module.css';
+import Main from '../../components/main';
+
 const ProductPage = () => {
     return (
-        <div>
+        <Main>
             ProductPage
-        </div>
+        </Main>
     )
 };
 

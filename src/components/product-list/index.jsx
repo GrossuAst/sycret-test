@@ -1,21 +1,43 @@
 import styles from './product-list.module.css';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-
 import Product from '../product';
-import { getInitialData } from '../../services/product-list/action';
+
+import { useSelector, shallowEqual } from 'react-redux';
 
 const ProductList = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getInitialData());
-    }, []);
+    const { data } = useSelector((store) => ({
+        data: store.products.data,
+    }), shallowEqual);
+    console.log(data)
 
     return (
-        <ul className={ styles.productList }>
-            <li className={ styles.listItem }>asd</li>
-        </ul>
+        <div className={ styles.contentContainer }>
+            <h2 className={ styles.title }>
+                Доступные сертификаты
+                <span className={ styles.subtitle }>{` (Всего ${data.length})`}</span>
+            </h2>
+            <ul className={ styles.productList }>
+                {
+                    data.map((item) => (
+                        <li className={ styles.listItem } key={ item.ID }>
+                            <Product 
+                                // для использования
+                                id={ item.ID }
+                                name={ item.NAME }
+                                description={ item.DESCRIPTION }
+                                price={ item.PRICE }
+                                priceToPay={ item.SUMMA }
+                                discount={ item.DISCOUNT }
+                                
+                                // для передачи
+                                tableName={ item.TABLENAME}
+                                primaryKey={ item.PRIMARYKEY }
+
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
     )
 };
 
