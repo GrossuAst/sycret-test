@@ -25,8 +25,11 @@ const Form = () => {
         e.preventDefault();
         if(isValid) {
             sendData(values, currentProduct)
-                .then(res => setPayed(true))
-                .catch(err => console.log(err))
+                .then(res => {
+                    setPayed(true);
+                    navigate('/pay')
+                })
+                .catch()
         }
     };
 
@@ -89,7 +92,6 @@ const Form = () => {
                     </div>
                 </form>
             </section>}
-            {isPayed && <p>Заказ успешно создан</p>}
         </>
     )
 };
