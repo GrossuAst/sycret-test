@@ -41,7 +41,7 @@ const Product = ({product, id, name, description, price, priceToPay, discount, t
                     </p>
                 </div>
                 <button className={ styles.button }>
-                    Купить
+                    Оформить
                 </button>
             </article>
         </Link>
